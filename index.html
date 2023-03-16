@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/style.css">
+    <title>Weather Dashboard</title>
+</head>
+<body>
+    <header class="container-fluid text-center text-white bg-dark p-2 weather-header">
+        <h1>Weather Dashboard</h1>
+    </header>
+
+<div class="container-fluid row" style="max-width: 1400px">
+    <div class="column">
+        <aside class="col-lg-3 pd-3">
+            <h2 id="form-heading" class="mt-1 h3 form-label">
+                Search for a City:
+            </h2>
+            <form id="search-form" class="form">
+                <div class="form-inline form-group">
+                    <div class="input-group">
+                        <input
+                            class="form-input weather-search"
+                            type="text"
+                            id="search-input"
+                            placeholder="Charlotte"
+                            aria-labelledby="form-heading"
+                            aria-controls="today forecast"
+                        />
+                        <div class="input-group-append">
+                            <button
+                                type="submit"
+                                class="btn search-button"
+                                id="search-button"
+                                aria-label="submit search"
+                            >
+                                Search
+                            </button>
+                            <hr class="hr weather-hr">
+                        </div>
+                    </div>
+                </div> 
+            </form>
+
+            <div class="row mt-3">
+                <div class="col-12">
+
+                    <ul id="searchHistory" class="list-group">
+                        <!-- append li here li class="list-group-item"-->
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+
+        <div id="weatherContent" class="col-9 pb-4 pt-4">
+            <div class="row pb-3 mr-2 ml-2">
+                <div id="cityDetail" class="col-12 border rounded px-3 py-3">
+                    <!-- display currentCity here text with p-->
+                </div>
+            </div>
+
+            <div class="row pb-2 pt-1">
+                <div class="col-12 ml-2">
+                    <h3>5-Day Forecast:</h3>
+                </div>
+            </div>
+
+            <div id="fiveDay" class="row pl-2">
+                <!-- add 5 day forecast info here -->
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+            <!-- Sections -->
+            <!-- Search Bar to display the user's history that they previously typed, saved in local storage -->
+            <!-- Top sections, top displayed current day's info (city name, date, weather conditions(icon), temp, humidity, and wind speed) -->
+            <!-- Section under that, 5 day forecast with date, weather conditions(icon), temp, humidity, and wind speed -->
+
+            <!-- Pseudo -->
+            <!-- Search bar takes city name, populates variable and runs function that fetches, as well as populates the the two sections with the
+            corresponding data -->
+            <!-- Save EITHER just city name in search history, or can also save all the data that was populated.  City name will be listed when
+            text area is clicked into -->
+            
+        </div>
+    </div>
+<script src="assets/script.js"></script>
+</body>
+</html>
