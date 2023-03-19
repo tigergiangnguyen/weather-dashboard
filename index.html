@@ -4,93 +4,91 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/style.css">
-    <title>Weather Dashboard</title>
+    <title>WeatherDashboard.com</title>
 </head>
 <body>
-    <header class="container-fluid text-center text-white bg-dark p-2 weather-header">
+    <div class="jumbotron container-fluid mt-2 text-center p-2">
         <h1>Weather Dashboard</h1>
-    </header>
-
-<div class="container-fluid row" style="max-width: 1400px">
-    <div class="column">
-        <aside class="col-lg-3 pd-3">
-            <h2 id="form-heading" class="mt-1 h3 form-label">
-                Search for a City:
-            </h2>
-            <form id="search-form" class="form">
-                <div class="form-inline form-group">
-                    <div class="input-group">
-                        <input
-                            class="form-input weather-search"
-                            type="text"
-                            id="search-input"
-                            placeholder="Charlotte"
-                            aria-labelledby="form-heading"
-                            aria-controls="today forecast"
-                        />
-                        <div class="input-group-append">
-                            <button
-                                type="submit"
-                                class="btn search-button"
-                                id="search-button"
-                                aria-label="submit search"
-                            >
-                                Search
-                            </button>
-                            <hr class="hr weather-hr">
-                        </div>
-                    </div>
-                </div> 
-            </form>
-
-            <div class="row mt-3">
-                <div class="col-12">
-
-                    <ul id="searchHistory" class="list-group">
-                        <!-- append li here li class="list-group-item"-->
-                    </ul>
-
-                </div>
-            </div>
-        </div>
-
-        <div id="weatherContent" class="col-9 pb-4 pt-4">
-            <div class="row pb-3 mr-2 ml-2">
-                <div id="cityDetail" class="col-12 border rounded px-3 py-3">
-                    <!-- display currentCity here text with p-->
-                </div>
-            </div>
-
-            <div class="row pb-2 pt-1">
-                <div class="col-12 ml-2">
-                    <h3>5-Day Forecast:</h3>
-                </div>
-            </div>
-
-            <div id="fiveDay" class="row pl-2">
-                <!-- add 5 day forecast info here -->
-            </div>
-
-        </div>
     </div>
 
-</div>
-
-
-            <!-- Sections -->
-            <!-- Search Bar to display the user's history that they previously typed, saved in local storage -->
-            <!-- Top sections, top displayed current day's info (city name, date, weather conditions(icon), temp, humidity, and wind speed) -->
-            <!-- Section under that, 5 day forecast with date, weather conditions(icon), temp, humidity, and wind speed -->
-
-            <!-- Pseudo -->
-            <!-- Search bar takes city name, populates variable and runs function that fetches, as well as populates the the two sections with the
-            corresponding data -->
-            <!-- Save EITHER just city name in search history, or can also save all the data that was populated.  City name will be listed when
+    <!-- Search bar takes city name, populates variable and runs function that fetches, as well as populates the the two sections with the corresponding data -->
+    <!-- Save EITHER just city name in search history, or can also save all the data that was populated.  City name will be listed when
             text area is clicked into -->
-            
+    <div class="container">
+        <div class="row">
+        <div class="col-sm-4">
+            <h4 class="pt-1">Search for a City:</h4>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" id="searchCity">
+        <div class="input-group-append">
+            <button class="button" id="searchButton"><i class="search"></i>Search</button>
+        </div>
+        <!-- Search Bar to display the user's history that they previously typed, saved in local storage -->
+        </div>
+            <button class="button" type="button" id="clearCity">Clear City</button>
+                <ul class="list-group"></ul>
+        </div>
+
+    <!-- Top sections, top displayed current day's info (city name, date, weather conditions(icon), temp, humidity, and wind speed) -->    
+    <div class="col-sm-8">
+        <div class="row ml-2 border">
+            <div class="col-sm-12" id="currentWeather">
+                <h3 class="city-name mb-1 mt-2 bolder" id="currentCity"></h3>
+                <p>Temperature:<span class="current" id="temperature"></span></p>
+                <p>Humidity:<span class="current" id="humidity"></span></p> 
+                <p>Wind Speed:<span class="current" id="windSpeed"></span></p>
+            </div>
+        </div>
+                
+    <!-- Section under that, 5 day forecast with date, weather conditions(icon), temp, humidity, and wind speed -->
+    <div class="col-sm-12" id ="futureWeather">
+        <h3>5-Day Forecast:</h3>
+            <div class="row">
+        <div class="col-sm-2 forecast text-white ml-2 mb-3 p-2 mt-2 rounded" >
+            <p id="date2"></p>
+            <p id="image2"></p>
+            <p>Temperature:<span id="temp2"></span></p>
+            <p>Humidity:<span id="hum2"></span></p>
+            <p>Wind Speed:<span id="windspeed2"></span></p>
+        </div>
+        <div class="col-sm-2 forecast text-white ml-2 mb-3 p-2 mt-2 rounded" >
+            <p id="date3"></p>
+            <p id="image3"></p>
+            <p>Temperature:<span id="temp3"></span></p>
+            <p>Humidity:<span id="hum3"></span></p>
+            <p>Wind Speed:<span id="windspeed3"></span></p>
+        </div>
+        <div class="col-sm-2 forecast text-white ml-2 mb-3 p-2 mt-2 rounded">
+            <p id="date4"></p>
+            <p id="image4"></p>
+            <p>Temperature:<span id="temp4"></span></p>
+            <p>Humidity:<span id="hum4"></span></p>
+            <p>Wind Speed:<span id="windspeed4"></span></p>
+        </div>
+        <div class="col-sm-2 forecast text-white ml-2 mb-3 p-2 mt-2 rounded">
+            <p id="date5"></p>
+            <p id="image5"></p>
+            <p>Temperature:<span id="temp5"></span></p>
+            <p>Humidity:<span id="hum5"></span></p>
+            <p>Wind Speed:<span id="windspeed5"></span></p>
+        </div>
+        <div class="col-sm-2 forecast text-white ml-2 mb-3 p-2 mt-2 rounded" >
+            <p id="date6"></p>
+            <p id="image6"></p>
+            <p>Temperature:<span id="temp6"></span></p>
+            <p>Humidity:<span id="hum6"></span></p>
+            <p>Wind Speed:<span id="windspeed6"></span></p>
+        </div>
+            </div>
+    </div>               
+    </div>
         </div>
     </div>
+
+<script src="https://code.jquery.com/jquery.js"></script>
 <script src="assets/script.js"></script>
 </body>
 </html>
