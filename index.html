@@ -2,93 +2,93 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
     <link rel="stylesheet" href="assets/style.css">
-    <title>WeatherDashboard.com</title>
+    <title>weatherdashboard.com</title>
 </head>
 <body>
-    <div class="jumbotron container-fluid mt-2 text-center p-2">
+    <div class="container-fluid mt-2 bg-danger text-center text-light p-2" id="banner">
         <h1>Weather Dashboard</h1>
     </div>
-
-    <!-- Search bar takes city name, populates variable and runs function that fetches, as well as populates the the two sections with the corresponding data -->
-    <!-- Save EITHER just city name in search history, or can also save all the data that was populated.  City name will be listed when
-            text area is clicked into -->
-    <div class="container">
-        <div class="row">
+    
+<!-- Search bar takes city name, populates variable and runs function that fetches, as well as populates the the two sections with the corresponding data -->
+<div class="container">
+    <div class="row">
         <div class="col-sm-4">
             <h4 class="pt-1">Search for a City:</h4>
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" id="searchCity">
-        <div class="input-group-append">
-            <button class="button" id="searchButton"><i class="search"></i>Search</button>
-        </div>
-        <!-- Search Bar to display the user's history that they previously typed, saved in local storage -->
-        </div>
-            <button class="button" type="button" id="clearCity">Clear City</button>
-                <ul class="list-group"></ul>
-        </div>
-
-    <!-- Top sections, top displayed current day's info (city name, date, weather conditions(icon), temp, humidity, and wind speed) -->    
-    <div class="col-sm-8">
-        <div class="row ml-2 border">
-            <div class="col-sm-12" id="currentWeather">
-                <h3 class="city-name mb-1 mt-2 bolder" id="currentCity"></h3>
-                <p>Temperature:<span class="current" id="temperature"></span></p>
-                <p>Humidity:<span class="current" id="humidity"></span></p> 
-                <p>Wind Speed:<span class="current" id="windSpeed"></span></p>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" id="searchCity">
+                <div class="input-group-append">
+                    <button class=" btn bg-dark text-light" id="searchButton">Search</button>
+                </div>
             </div>
-        </div>
-                
-    <!-- Section under that, 5 day forecast with date, weather conditions(icon), temp, humidity, and wind speed -->
+<!-- Save EITHER just city name in search history, or can also save all the data that was populated.  City name will be listed when text area is clicked into -->
+<!-- Search Bar to display the user's history that they previously typed, saved in local storage -->
+            <button class=" btn btn-dark" type="button" id="clearSearch">Clear Search</button>
+            <ul class="list-group" id="historyList">
+            </ul>
+        </div>   
+        
+<!-- Top sections, top displayed current day's info (city name, date, weather conditions(icon), temp, humidity, and wind speed) -->    
+        <div class="col-sm-8">
+            <div class="row ml-2 border border-dark">
+                <div class="col-sm-12" id="current-weather">
+                    <h3 class="city-name mb-1 mt-2 text-center bolder" id="currentCity"></h3>
+                    <p>Temperature: <span class="current" id="temperature"></span></p>
+                    <p>Humidity: <span class="current" id="humidity"></span></p> 
+                    <p>Wind Speed: <span class="current" id="windSpeed"></span></p>
+                </div>
+            </div>
+            
+<!-- Section under that, 5 day forecast with date, weather conditions(icon), temp, humidity, and wind speed -->
     <div class="col-sm-12" id ="futureWeather">
         <h3>5-Day Forecast:</h3>
-            <div class="row">
-        <div class="col-sm-2 forecast text-white ml-2 mb-3 p-2 mt-2 rounded" >
+        <div class="row text-light">
+        <div class="col-sm-2 bg-dark forecast text-white ml-2 mb-3 p-2 mt-2 rounded" >
+            <p id="date0"></p>
+            <p id="image0"></p>
+            <p>Temper: <span id="temper0"></span></p>
+            <p>Humidity: <span id="hum0"></span></p>
+            <p>W Speed: <span id="wSpeed0"></span></p>
+        </div>
+        <div class="col-sm-2 bg-dark forecast text-white ml-2 mb-3 p-2 mt-2 rounded" >
+            <p id="date1"></p>
+            <p id="image1"></p>
+            <p>Temper: <span id="temper1"></span></p>
+            <p>Humidity: <span id="hum1"></span></p>
+            <p>W Speed: <span id="wSpeed1"></span></p>
+        </div>
+            <div class="col-sm-2 bg-dark forecast text-white ml-2 mb-3 p-2 mt-2 rounded">
             <p id="date2"></p>
             <p id="image2"></p>
-            <p>Temperature:<span id="temp2"></span></p>
-            <p>Humidity:<span id="hum2"></span></p>
-            <p>Wind Speed:<span id="windspeed2"></span></p>
+            <p>Temper: <span id="temper2"></span></p>
+            <p>Humidity: <span id="hum2"></span></p>
+            <p>W Speed: <span id="wSpeed2"></span></p>
         </div>
-        <div class="col-sm-2 forecast text-white ml-2 mb-3 p-2 mt-2 rounded" >
+        <div class="col-sm-2 bg-dark forecast text-white ml-2 mb-3 p-2 mt-2 rounded">
             <p id="date3"></p>
             <p id="image3"></p>
-            <p>Temperature:<span id="temp3"></span></p>
-            <p>Humidity:<span id="hum3"></span></p>
-            <p>Wind Speed:<span id="windspeed3"></span></p>
+            <p>Temper: <span id="temper3"></span></p>
+            <p>Humidity: <span id="hum3"></span></p>
+            <p>W Speed: <span id="wSpeed3"></span></p>
         </div>
-        <div class="col-sm-2 forecast text-white ml-2 mb-3 p-2 mt-2 rounded">
+        <div class="col-sm-2 bg-dark forecast text-white ml-2 mb-3 p-2 mt-2 rounded" >
             <p id="date4"></p>
             <p id="image4"></p>
-            <p>Temperature:<span id="temp4"></span></p>
-            <p>Humidity:<span id="hum4"></span></p>
-            <p>Wind Speed:<span id="windspeed4"></span></p>
+            <p>Temper: <span id="temper4"></span></p>
+            <p>Humidity: <span id="hum4"></span></p>
+            <p>W Speed: <span id="wSpeed4"></span></p>
         </div>
-        <div class="col-sm-2 forecast text-white ml-2 mb-3 p-2 mt-2 rounded">
-            <p id="date5"></p>
-            <p id="image5"></p>
-            <p>Temperature:<span id="temp5"></span></p>
-            <p>Humidity:<span id="hum5"></span></p>
-            <p>Wind Speed:<span id="windspeed5"></span></p>
         </div>
-        <div class="col-sm-2 forecast text-white ml-2 mb-3 p-2 mt-2 rounded" >
-            <p id="date6"></p>
-            <p id="image6"></p>
-            <p>Temperature:<span id="temp6"></span></p>
-            <p>Humidity:<span id="hum6"></span></p>
-            <p>Wind Speed:<span id="windspeed6"></span></p>
-        </div>
-            </div>
     </div>               
-    </div>
         </div>
     </div>
+</div>
 
-<script src="https://code.jquery.com/jquery.js"></script>
-<script src="assets/script.js"></script>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/script.js"></script>
 </body>
 </html>
